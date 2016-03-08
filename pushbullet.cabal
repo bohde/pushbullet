@@ -1,0 +1,37 @@
+name:                pushbullet
+version:             0.1.0.0
+synopsis:            TODO Initial project template from stack
+description:         Please see README.md
+homepage:            http://github.com/joshbohde/pushbullet
+license:             BSD3
+license-file:        LICENSE
+author:              Josh Bohde
+maintainer:          josh@joshbohde.com
+copyright:           2016 Josh Bohde
+category:            Acme
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+tested-with:         GHC == 7.10.2
+
+library
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+  hs-source-dirs:      src
+  exposed-modules:     Lib
+  build-depends:       base >= 4.7 && < 5
+
+test-suite spec
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , pushbullet
+                     , hspec
+                     , QuickCheck
+
+source-repository head
+  type:     git
+  location: https://github.com/joshbohde/pushbullet
