@@ -18,8 +18,16 @@ library
   default-language:    Haskell2010
   ghc-options:         -Wall
   hs-source-dirs:      src
-  exposed-modules:     Lib
-  build-depends:       base >= 4.7 && < 5
+  exposed-modules:     Pushbullet.API,
+                       Pushbullet.Models.Push
+                       Pushbullet.Models.PushRequest
+  build-depends:       base >= 4.7 && < 5,
+                       text,
+                       vector,
+                       servant,
+                       servant-client,
+                       either,
+                       aeson
 
 test-suite spec
   default-language:    Haskell2010
