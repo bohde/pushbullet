@@ -21,13 +21,13 @@ library
   exposed-modules:     Pushbullet.API,
                        Pushbullet.Models.Push
                        Pushbullet.Models.PushRequest
-  build-depends:       base >= 4.7 && < 5,
-                       text,
-                       vector,
-                       servant,
-                       servant-client,
-                       either,
-                       aeson
+  build-depends:       base >= 4.7 && < 5
+                     , aeson == 0.9.* || == 0.11.*
+                     , either == 4.4.*
+                     , servant == 0.4.*
+                     , servant-client == 0.4.*
+                     , text == 1.2.*
+                     , vector >= 0.10 && < 0.12
 
 test-suite spec
   default-language:    Haskell2010
