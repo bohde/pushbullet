@@ -22,7 +22,7 @@ library
                        Pushbullet.Models.Push
                        Pushbullet.Models.PushRequest
   build-depends:       base >= 4.7 && < 5
-                     , aeson == 0.9.* || == 0.11.*
+                     , aeson (>= 0.8 && < 0.10) || == 0.11.*
                      , either == 4.4.*
                      , servant == 0.4.*
                      , servant-client == 0.4.*
