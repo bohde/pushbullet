@@ -11,7 +11,7 @@ import           Test.QuickCheck.Instances
 
 instance Arbitrary Target where
   arbitrary = oneof [
-      pure All
+      return All
     , Device <$> arbitrary
     , Email <$> arbitrary
     , Channel <$> arbitrary

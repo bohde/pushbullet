@@ -39,7 +39,7 @@ instance FromJSON Target where
                            <|> (Email <?> "email")
                            <|> (Channel <?> "channel_tag")
                            <|> (Client <?> "client_iden")
-                           <|> pure All
+                           <|> return All
     where
       f <?> k = f <$> v .: k
   parseJSON invalid = A.typeMismatch "Target" invalid
