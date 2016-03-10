@@ -7,14 +7,13 @@ module Pushbullet.Models.PushRequest (
   PushRequest(..)
   ) where
 
-import           Control.Applicative    ((<$>), (<*>), (<|>))
-import           Data.Aeson             (FromJSON, ToJSON, object, parseJSON,
-                                         toJSON, (.:), (.:?), (.=))
-import qualified Data.Aeson.Types       as A
-import           Data.Monoid            ((<>))
-import qualified Data.Text              as T
-import           GHC.Generics           (Generic)
-import           Pushbullet.Models.Push (PushType)
+import           Control.Applicative ((<$>), (<*>), (<|>))
+import           Data.Aeson          (FromJSON, ToJSON, object, parseJSON,
+                                      toJSON, (.:), (.:?), (.=))
+import qualified Data.Aeson.Types    as A
+import           Data.Monoid         ((<>))
+import qualified Data.Text           as T
+import           GHC.Generics        (Generic)
 
 data Target = All
             | Device T.Text
