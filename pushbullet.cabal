@@ -37,8 +37,10 @@ test-suite spec
   main-is:             Spec.hs
   build-depends:       base
                      , pushbullet
+                     , aeson
                      , hspec
                      , QuickCheck
+                     , quickcheck-instances
 
 source-repository head
   type:     git
