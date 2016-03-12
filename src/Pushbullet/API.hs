@@ -2,17 +2,17 @@
 {-# LANGUAGE TypeOperators #-}
 module Pushbullet.API where
 
-import           Control.Monad.Trans.Either    (EitherT)
-import           Data.Proxy                    (Proxy (..))
-import           Data.Text                     (Text)
-import qualified Pushbullet.Models.Push        as Push
-import qualified Pushbullet.Models.PushRequest as PushRequest
+import           Control.Monad.Trans.Either (EitherT)
+import           Data.Proxy                 (Proxy (..))
+import           Data.Text                  (Text)
+import qualified Pushbullet.Models.Push     as Push
 import           Servant.API
 import           Servant.Client
 
-type V2 = "pushes" :> ReqBody '[JSON] PushRequest.PushRequest
-                   :> Post '[JSON] Push.Push
-
+type API = Header "Access-Token" AccessToken :> "v2" :> "pushes" :> Get '[JSON] Push.Pushes
+      :<|> Header "Access-Token" AccessToken :> "v2" :> "pushes" :> ReqBody '[JSON] Push.PushRequest :> Post '[JSON] Push.Push
+      :<|> Header "Access-Token" AccessToken :> "v2" :> "pushes" :> Capture "iden" Text :> ReqBody '[JSON] Push.PushUpdate :> Post '[JSON] Push.Push
+      :<|> Header "Access-Token" AccessToken :> "v2" :> "pushes" :> Capture "iden" Text :> Delete '[JSON] ()
 
 newtype AccessToken = AccessToken Text
 
@@ -23,10 +23,11 @@ instance FromText AccessToken where
   fromText x = Just $ AccessToken x
 
 
-type API = Header "Access-Token" AccessToken :> "v2" :> V2
-
 api :: Proxy API
 api = Proxy
 
-createPush :: Maybe AccessToken -> PushRequest.PushRequest -> EitherT ServantError IO Push.Push
-createPush = client api (BaseUrl Https "api.pushbullet.com" 443)
+listPushes :: Maybe AccessToken -> EitherT ServantError IO Push.Pushes
+createPush :: Maybe AccessToken -> Push.PushRequest -> EitherT ServantError IO Push.Push
+updatePush :: Maybe AccessToken -> Text -> Push.PushUpdate -> EitherT ServantError IO Push.Push
+deletePush :: Maybe AccessToken -> Text -> EitherT ServantError IO ()
+(listPushes :<|> createPush :<|> updatePush :<|> deletePush) = client api (BaseUrl Https "api.pushbullet.com" 443)
