@@ -1,5 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
-module Pushbullet.Models.Push (
+-- |
+module Pushbullet.API.Models (
   Push(..),
   Pushes(..),
   PushType(..),

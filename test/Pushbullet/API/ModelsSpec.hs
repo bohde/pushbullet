@@ -1,10 +1,10 @@
 {-# LANGUAGE OverloadedStrings   #-}
 {-# LANGUAGE ScopedTypeVariables #-}
-module Pushbullet.Models.PushSpec where
+module Pushbullet.API.ModelsSpec where
 
-import           Control.Applicative    ((<$>), (<*>))
-import           Data.Aeson             (eitherDecode, encode)
-import           Pushbullet.Models.Push
+import           Control.Applicative   ((<$>), (<*>))
+import           Data.Aeson            (eitherDecode)
+import           Pushbullet.API.Models
 import           Test.Hspec
 
 spec :: Spec
