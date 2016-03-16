@@ -2,7 +2,6 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 module Pushbullet.API.ModelsSpec where
 
-import           Control.Applicative   ((<$>), (<*>))
 import           Data.Aeson            (eitherDecode)
 import           Pushbullet.API.Models
 import           Test.Hspec
